@@ -70,9 +70,7 @@ public class CommentService {
 	public void deleteComments(Integer idComments) {
 		Session session = sessionFactory.getCurrentSession();
 
-		// Delete reference to foreign key comments first
-		// We need a SQL query instead of HQL query here to access the third
-		// table
+	
 		Query query = session.createSQLQuery("DELETE FROM theme_comments "
 				+ "WHERE comments_idComments=" + idComments);
 

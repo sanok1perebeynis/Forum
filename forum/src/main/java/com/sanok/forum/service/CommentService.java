@@ -60,10 +60,9 @@ public class CommentService {
 		session.save(comments);
 		Theme existingTheme = (Theme) session.get(Theme.class, idTheme);
 
-		// Assign updated values to this theme
+	
 		existingTheme.getComments().add(comments);
 
-		// Save updates
 		session.save(existingTheme);
 	}
 	
@@ -76,24 +75,21 @@ public class CommentService {
 
 		query.executeUpdate();
 
-		// Retrieve existing comments
 		Comments comments = (Comments) session.get(Comments.class, idComments);
 
-		// Delete
 		session.delete(comments);
 	}
 	
 	public void editComment(Comments comments) {
 		Session session = sessionFactory.getCurrentSession();
 
-		// Retrieve existing comments via id
+
 		Comments existingComment = (Comments) session.get(Comments.class,
 				comments.getIdComments());
 
-		// Assign updated values to this comments card
 		existingComment.setCommentText(comments.getCommentText());
 		
-		// Save updates
+
 		session.save(existingComment);
 	}
 	
